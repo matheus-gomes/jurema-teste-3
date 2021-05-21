@@ -1,16 +1,18 @@
-interface IEstado {
-  nome: string;
-  uf: string;
+interface IEstados {
+  estados: Array<{
+    nome: string;
+    uf: string;
+  }>
 }
 
 export class EstadoRepository {
-  private estados: Array<IEstado>;
+  private estados: IEstados;
 
   constructor() {
     this.estados = require("../../data/estados.json");
   }
 
-  lista(): Array<IEstado> {
+  lista(): IEstados {
     return this.estados;
   }
 }

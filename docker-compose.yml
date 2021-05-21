@@ -1,14 +1,10 @@
 version: "3.7"
 
+networks:
+  servicesnet:
+    driver: bridge
+
 services:
-  estado:
-    build: ./servicoEstado
-    container_name: servicoEstado
-    ports:
-      - 3000:3000
-    volumes:
-      - ./servicoEstado:/usr/app
-  
   populacao:
     build: ./servicoPopulacao
     container_name: servicoPopulacao
@@ -16,3 +12,17 @@ services:
       - 3001:3001
     volumes:
       - ./servicoPopulacao:/usr/app
+    networks:
+      - servicesnet
+
+  estado:
+    build: ./servicoEstado
+    container_name: servicoEstado
+    ports:
+      - 3000:3000
+    volumes:
+      - ./servicoEstado:/usr/app
+    depends_on:
+      - populacao
+    networks:
+      - servicesnet
