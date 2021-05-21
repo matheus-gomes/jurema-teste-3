@@ -2,6 +2,7 @@ interface IEstados {
   estados: Array<{
     nome: string;
     uf: string;
+    populacao?: number;
   }>
 }
 

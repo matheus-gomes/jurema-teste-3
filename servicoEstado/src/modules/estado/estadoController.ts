@@ -5,8 +5,8 @@ import { EstadoService } from "./estadoService";
 export class EstadoController {
   constructor(private estadoService: EstadoService) { }
 
-  lista(req: Request, res: Response): Response {
-    const estados = this.estadoService.lista();
+  async lista(req: Request, res: Response): Promise<Response> {
+    const estados = await this.estadoService.lista();
 
     return res.json(estados);
   }

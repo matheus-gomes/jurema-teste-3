@@ -5,18 +5,18 @@ export class EstadoService {
   constructor(private estadoRepository: EstadoRepository) { }
 
   async lista() {
-    const { estados } = this.estadoRepository.lista();
-    console.log(estados)
+    let { estados } = this.estadoRepository.lista();
 
     const promises = estados.map(async (estado) => {
+      const response = await new HttpUtils().request(`/populacao/${estado.uf}`, "GET");
       return {
-        ...estados,
-        populacao: await new HttpUtils().request(`/populacao/${estado.uf}`, "GET")
+        ...estado,
+        populacao: response.data.populacao
       }
     });
 
-    const resposta = await Promise.all(promises);
+    estados = await Promise.all(promises);
 
-    return resposta;
+    return { estados };
   }
 }
