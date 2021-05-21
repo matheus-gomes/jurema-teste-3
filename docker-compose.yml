@@ -1,0 +1,18 @@
+version: "3.7"
+
+services:
+  estado:
+    build: ./servicoEstado
+    container_name: servicoEstado
+    ports:
+      - 3000:3000
+    volumes:
+      - ./servicoEstado:/usr/app
+  
+  populacao:
+    build: ./servicoPopulacao
+    container_name: servicoPopulacao
+    ports:
+      - 3001:3001
+    volumes:
+      - ./servicoPopulacao:/usr/app

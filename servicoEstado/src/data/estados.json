@@ -1,0 +1,20 @@
+{
+  "estados": [
+    {
+      "nome": "São Paulo",
+      "uf": "SP"
+    },
+    {
+      "nome": "Rio de Janeiro",
+      "uf": "RJ"
+    },
+    {
+      "nome": "Pernambuco",
+      "uf": "PE"
+    },
+    {
+      "nome": "Bahia",
+      "uf": "BA"
+    }
+  ]
+}
